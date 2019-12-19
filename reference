@@ -1,0 +1,102 @@
+// Successful transaction details
+
+var order_details = {
+  "order_amount":50,
+  "sp_orders":[
+    {
+    "program_type_id":"SP",
+    "key_code":"7DONATE",
+    "product":"MOJRD",
+    "secondary_sp_code":"SINGLE",
+    "offer_pmt":"50.00",
+    "offer_tax":0,
+    "offer_pmt_free_ok":"N",
+    "recurring_amt":".00",
+    "recurring_date":"",
+    "period":"O",
+    "frequency":"1",
+    "access_level":"",
+    "description":""
+    }
+  ]
+};
+
+var order_details = {
+  "order_amount":15,
+  "sp_orders":[
+    {
+    "program_type_id":"SP",
+    "key_code":"7DONATE",
+    "product":"MOJRD",
+    "secondary_sp_code":"SUSTAINER",
+    "offer_pmt":"15.00",
+    "offer_tax":0,
+    "offer_pmt_free_ok":"N",
+    "recurring_amt":"15.00",
+    "recurring_date":"2020-01-17",
+    "period":"M",
+    "frequency":"1",
+    "access_level":"PRINT",
+    "description":""
+    }
+  ]
+};
+
+var order_details = JSON.parse('{
+  "order_amount":18,
+  "su_orders":[
+    {
+    "gift_ref":"",
+    "program_type_id":"SU",
+    "product":"MJ",
+    "key_code":"SEGYNC",
+    "term":"6",
+    "qty":1,
+    "price":"18.00",
+    "shipping":".00",
+    "tax":0,
+    "premium1":"",
+    "premium2":"",
+    "premium3":"",
+    "start_issue":"",
+    "free_ok":"N",
+    "auto_charge":"Y",
+    "send_email_confirmation":"N",
+    "access_level":"COMBO",
+    "description":"Mother Jones - Combo"
+    }
+  ]
+}');
+var order_details = JSON.parse('{
+  "order_amount":12,
+  "su_orders":[
+    {
+    "gift_ref":"",
+    "program_type_id":"SU",
+    "product":"MJ",
+    "key_code":"SEGYNP",
+    "term":"6",
+    "qty":1,
+    "price":"12.00",
+    "shipping":".00",
+    "tax":0,
+    "premium1":"",
+    "premium2":"",
+    "premium3":"",
+    "start_issue":"",
+    "free_ok":"N",
+    "auto_charge":"Y",
+    "send_email_confirmation":"N",
+    "access_level":"PRINT",
+    "description":"Mother Jones - Print"
+    }
+  ]
+}');
+
+
+// previous ICN cookie format
+var
+document.cookie = 'SFGTimestamp=' + (new Date).getTime()
+   + '; expires=' + new Date(new Date().getTime() + (365*24*60*60*1000)).toUTCString()
+   + '; domain=.motherjones.com'
+   + '; path=/';

@@ -1,0 +1,55 @@
+// Google Tag Manager Data Layer Initialization
+<script>
+dataLayer = [];
+</script>
+
+// Google Tag Manager Container Script
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NDDQ8RC');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NDDQ8RC"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+// Google Tag Manager Data Layer Events
+<script>
+if (typeof order_details !== 'undefined' &&
+  typeof order_details.sp_orders !== 'undefined') {
+    order_details.timestamp = (new Date).getTime();
+    order_details.sp_orders.forEach(function(order){
+      if (typeof order.program_type_id !== 'undefined') {
+        var orderType;
+        if (order.program_type_id === 'SP') {
+          if (order.secondary_sp_code === 'SINGLE') {
+            orderType = 'DON';
+          } else {
+            orderType = 'SDN';
+          }
+          bake_cookie('SFGDonation', order_details);
+      };
+      dataLayer.push({
+        'transactionType': orderType,
+        'transactionAmt': order.offer_pmt,
+        'transactionKeyCode': order.key_code,
+        'event': 'transactionComplete'
+      });
+    });
+};
+function bake_cookie(name, value) {
+  var cookie = [
+    name,
+    '=',
+    JSON.stringify(value),
+    '; expires=.',
+    new Date(new Date().getTime() + (365*24*60*60*1000)).toUTCString(),
+    '; domain=.motherjones.com',
+    '; path=/;'
+  ].join('');
+  document.cookie = cookie;
+}
+</script>

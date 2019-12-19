@@ -1,0 +1,20 @@
+// Order page
+<div id="sslseal">
+@@SSLSEAL
+</div>
+<div id="disclaimer-text">
+	<p>
+		Your donation is tax-deductible to the fullest extent of the law, and will appear as a charge to The Foundation for National Progress&mdash;the 501(c)(3) nonprofit organization created to publish Mother Jones. Our Federal Tax-ID is #94-2282759.
+	</p>
+	<ul>
+		<li><a href="mailto:customerservice@my.motherjones.com" target="_blank">Problems Donating?</a></li>
+		<li><a href="https://www.motherjones.com/support/" target="_blank">Other Ways To Give</a></li>
+		<li><a href="https://www.motherjones.com/about/faq/" target="_blank">Frequently Asked Questions</a></li>
+	</ul>
+</div>
+
+// Preview page
+[empty]
+
+// Confirmation page
+[empty]

@@ -1,0 +1,15 @@
+// Order page
+<div id="sslseal">
+@@SSLSEAL
+</div>
+<div id="disclaimer-text">
+	<p>
+		<strong>Evergreen auto-renew program:</strong> Never miss an issue and enjoy special savings for as long as you’re a <em>Mother Jones</em> subscriber. We’ll automatically renew your subscription every year at a rate guaranteed to be lower than the rates we offer through the mail. You’ll help us conserve resources we’d otherwise use to mail paper renewal reminders, and we’ll pass those savings on to you. We’ll send you a reminder once a year, at least 30 days before your final issue. If we don’t hear from you, we’ll automatically renew you for another year. If we cannot charge your card, we’ll simply bill you. You may opt out of automatic renewal at any time by calling 1-800-438-MOJO or emailing <a href="mailto:customerservice@my.motherjones.com">customerservice@my.motherjones.com</a>.
+	</p>
+</div>
+
+// Preview page
+[empty]
+
+// Confirmation page
+[empty]
