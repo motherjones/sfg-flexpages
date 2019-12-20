@@ -24,14 +24,13 @@ if (typeof order_details !== 'undefined' &&
     order_details.sp_orders.forEach(function(order){
       if (typeof order.program_type_id !== 'undefined') {
         var orderType;
-        if (order.program_type_id === 'SP') {
-          if (order.secondary_sp_code === 'SINGLE') {
-            orderType = 'DON';
-          } else {
-            orderType = 'SDN';
-          }
-          bake_cookie('SFGDonation', order_details);
+        if (order.secondary_sp_code === 'SINGLE') {
+          orderType = 'DON';
+        } else {
+          orderType = 'SDN';
+        }
       };
+      bake_cookie('SFGDonation', order_details);
       dataLayer.push({
         'transactionType': orderType,
         'transactionAmt': order.offer_pmt,
