@@ -1,0 +1,643 @@
+<link rel="icon" href="../../images/favicon-32x32.png" sizes="32x32">
+<meta name="description" content="Subscribe to our magazine for the hard-hitting stories that others in the media are ignoring. Subscribe today and get a full year of Mother Jones for just $12!" />
+<meta name="og:description" content="Subscribe to our magazine for the hard-hitting stories that others in the media are ignoring. Subscribe today and get a full year of Mother Jones for just $12!" />
+<meta name="og:title" content="Mother Jones Magazine and Digital Subscriptions" />
+<meta name="og:image" content="https://ssl.drgnetwork.com/ecom/MOJ/images/mj-logo-social.jpg" />
+<script type="text/javascript">
+$(document).ready(function() {
+  // if this is not the default for this page type, make sure google knows which primary page to index.
+  if (window.location.href.indexOf("SEGYNC") == -1) {
+    $('head').append('<link rel="canonical" href="https://secure.motherjones.com/flex/mj/key/SEGYNC/" />');
+  }
+  // SEO title
+  $(document).prop("title", "Magazine and Digital Subscriptions - Mother Jones");
+  $("#offers").remove();
+  $("#offer_col").removeClass("col-sm-6 col-sm-push-6").hide();
+  $("#form_col").removeClass("col-sm-6 col-sm-pull-6").addClass("col-sm-12");
+  $("<div id='new-group'></div>").insertBefore("#div_businessName");
+  $("#sl_options").insertBefore("#new-group");
+  $("<div class='col-sm-12 form-group' id='div_first_last'></div>").appendTo("#new-group");
+  $("#div_firstName").appendTo("#div_first_last");
+  $("#div_firstName label").removeClass("col-sm-3").addClass("col-sm-4");
+  $("#div_firstName").addClass("col-sm-6");
+  $("#div_lastName").insertAfter("#div_firstName");
+  $("#div_lastName").addClass("col-sm-6");
+  $("#div_lastName label").removeClass("col-sm-3").addClass("col-sm-4");
+  $("#div_businessName").insertAfter("#div_first_last").addClass("col-sm-12");
+  $("#div_businessName label").removeClass("col-sm-3").addClass("col-sm-2");
+  $("#div_businessName .col-sm-8").removeClass("col-sm-8").addClass("col-sm-9");
+  $("#div_address1").insertAfter("#div_businessName").addClass("col-sm-12");
+  $("#div_address1 label").removeClass("col-sm-3").addClass("col-sm-2");
+  $("#div_address1 .col-sm-8").removeClass("col-sm-8").addClass("col-sm-9");
+  $("#div_address1 label").text("Mailing Address");
+  $("#div_address2").insertAfter("#div_address1").addClass("col-sm-12");
+  $("#div_address2 label").removeClass("col-sm-3").addClass("col-sm-2").text("Address 2");
+  $("#div_address2 .col-sm-8").removeClass("col-sm-8").addClass("col-sm-9");
+  $("#div_businessName").remove();
+  $("<div class='col-sm-12 form-group' id='div_city_state'></div>").appendTo("#new-group");
+  $("#div_city").appendTo("#div_city_state").addClass("col-sm-6");
+  $("#div_city label").removeClass("col-sm-3").addClass("col-sm-4");
+  $("#div_state").insertAfter("#div_city").addClass("col-sm-6");
+  $("#div_state label").removeClass("col-sm-3").addClass("col-sm-4");
+  $("<div class='col-sm-12 form-group' id='div_zip_country'></div>").appendTo("#new-group");
+  $("#div_zip").appendTo("#div_zip_country").addClass("col-sm-6");
+  $("#div_zip label").removeClass("col-sm-3").addClass("col-sm-4").text("Zip");
+  $("#div_country").insertAfter("#div_address2").addClass("col-sm-6");
+  $("#div_country label").removeClass("col-sm-3").addClass("col-sm-4");
+  $("#div_email").insertAfter("#div_zip_country").addClass("col-sm-12");
+  $("#div_email label").removeClass("col-sm-3").addClass("col-sm-2");
+  $("#div_email .col-sm-8").removeClass("col-sm-8").addClass("col-sm-9");
+  $("#contain_payment").insertAfter("#div_email").addClass("col-sm-9");
+  $("#one_time_outer_div").insertBefore("#contain_payment");
+  $("#offer_paypal_button label").remove();
+  $("#offer_paypal_button div").removeClass("col-sm-8");
+  $("#pay_with_paypal").remove();
+  $("#cc_paypal_divider").remove();
+  $(".cc_logo").parent().removeClass("col-sm-offset-3").addClass("col-sm-offset-2").prop("id", "cc_row");
+  $(".cc_logo").remove();
+  $("#cc_row").html("<img class='cc_logo' src='../../images/cc_combined.png' alt='credit card logos'/>");
+  $("#offer_paypal_button").appendTo("#cc_row");
+  $(".summary_line").insertBefore("#submit1");
+  $("#auto-renew-text").insertBefore("#submit1");
+  $("#auto-renew-text").parent().remove;
+  $("#auto-renew-text").addClass("col-sm-12");
+  $("#submit1").removeClass("col-xs-offset-6");
+  $("button[name=submit_all]").wrap("<div class='col-sm-12 text-center'></div>");
+  $("button[name=submit_all]").text("Continue to Order Confirmation");
+  $("#errorContain").insertBefore("#new-group");
+  $("#sslseal").insertAfter("#submit1");
+  $("#div_credit").hide();
+  $("#div_cvvCode").hide();
+  $("#div_expire").hide();
+  $(".summary_line").hide();
+  $("#auto-renew-text").hide();
+  $("#submit1").hide();
+  $("#sslseal").hide();
+  $(".panel-primary").eq(2).addClass("totals-div");
+  $(".totals-div .panel-heading").remove();
+  $("#previewTotalsCol1 p").hide();
+  $("#previewTotalsCol1 p").eq(3).show();
+  $("#previewTotalsCol2 p").hide();
+  $("#previewTotalsCol2 p").eq(3).show();
+  $("button[name=process]").text("Submit Order");
+
+  // handle back button correctly
+  if($('#paypal_checkbox').is(':checked')) {
+    disable_cc();
+    show_submit();
+    $('#paypal_img').prop('src','../../images/paypal_checkbox_img_responsive_checked.png');
+  }
+
+  $(".cc_logo").click(function() {
+    enable_cc();
+    show_submit();
+    $('#paypal_img').prop('src','../../images/paypal_checkbox_img_responsive.png');
+  });
+  $("#paypal_select_button").click(function() {
+    disable_cc();
+    show_submit();
+    $('#paypal_img').prop('src','../../images/paypal_checkbox_img_responsive_checked.png');
+  });
+
+  function disable_cc() {
+    $('#paypal_checkbox').prop('checked', true);
+    $('#paypal_img').removeClass('disabled')
+    $(".cc_logo").addClass('disabled');
+    $("#div_credit").hide();
+    $("#div_cvvCode").hide();
+    $("#div_expire").hide();
+    $('#credit').prop('disabled',true);
+    $('#cvvCode').prop('disabled',true);
+    $("select[name='ExpireMonth']").prop('disabled',true);
+    $("select[name='ExpireYear']").prop('disabled',true);
+  }
+
+  function enable_cc() {
+    $('#paypal_checkbox').prop('checked', false);
+    $('#paypal_img').addClass('disabled');
+    $(".cc_logo").removeClass('disabled');
+    $("#div_credit").show();
+    $("#div_cvvCode").show();
+    $("#div_expire").show();
+    $('#credit').prop('disabled',false);
+    $('#cvvCode').prop('disabled',false);
+    $("select[name='ExpireMonth']").prop('disabled',false);
+    $("select[name='ExpireYear']").prop('disabled',false);
+  }
+
+  function show_submit() {
+    $(".summary_line").show();
+    $("#auto-renew-text").show();
+    $("#submit1").show();
+    $("#sslseal").show();
+  }
+
+  $("#sel_Country").change(function() {
+    if($("#sel_Country option:selected").val() == "USA") {
+      $("#div_state").show();
+      $("#div_zip label").text("Zip");
+      $("#div_state label").text("State");
+      usa_location();
+    }
+    else if($("#sel_Country option:selected").val() == "CANADA") {
+      $("#div_state").show();
+      $("#div_zip label").text("Postal Code");
+      $("#div_state label").text("Province");
+      can_location();
+    }
+    else {
+      $("#div_state").hide();
+      $("#div_zip label").text("Postal Code");
+      int_location();
+    }
+    update_summary_line();
+  });
+
+  $("input[name=Offer]").click(function() {
+    update_summary_line();
+  });
+
+  $("button[name=submit_all]").click(function() {
+    if($("#offercombo").is(":checked")) {
+      $("input[name=USA4]").val("SEGYNC");
+    }
+    else if($("#offerprint").is(":checked")) {
+      $("input[name=USA4]").val("SEGYNP");
+    }
+    else if($("#offerdigital").is(":checked")) {
+      $("input[name=USA4]").val("SEGYND");
+    }
+  });
+
+  $("#open_donation_MOJRD-SINGLE-OTOPEN").on("input", function() {
+    if($("#open_donation_MOJRD-SINGLE-OTOPEN").val() == '') {
+      $("#MOJRD-SINGLE-OTOPEN"). prop("checked", false);
+      $(".don_summary").text("");
+    } else {
+      $("#MOJRD-SINGLE-OTOPEN"). prop("checked", true);
+      var amount = $("#open_donation_MOJRD-SINGLE-OTOPEN").val();
+      $(".don_summary").text(", plus an additional $" + formatNumber(amount) + " donation");
+    }
+  });
+});
+
+function usa_location() {
+  $("#usacombo").show();
+  $("#usaprint").show();
+  $("#cancombo").hide();
+  $("#canprint").hide();
+  $("#intcombo").hide();
+  $("#intprint").hide();
+  $(".sllocation").text("US");
+}
+function can_location() {
+  $("#usacombo").hide();
+  $("#usaprint").hide();
+  $("#cancombo").show();
+  $("#canprint").show();
+  $("#intcombo").hide();
+  $("#intprint").hide();
+  $(".sllocation").text("Canada");
+}
+function int_location() {
+  $("#usacombo").hide();
+  $("#usaprint").hide();
+  $("#cancombo").hide();
+  $("#canprint").hide();
+  $("#intcombo").show();
+  $("#intprint").show();
+  $(".sllocation").text("International");
+}
+function update_summary_line() {
+  if($("#offercombo").is(":checked")) {
+    var service_level = $(".combo_service_level").text();
+    var price = "";
+    $(".summary_service_level").text(service_level);
+    if($("#sel_Country option:selected").val() === "USA") {
+      price = $(".slusacomboprice").text();
+    }
+    else if($("#sel_Country option:selected").val() === "CANADA") {
+      price = $(".slcancomboprice").text();
+    }
+    else {
+      price = $(".slintcomboprice").text();
+    }
+    $(".slprice").text(price);
+  }
+  else if($("#offerprint").is(":checked")) {
+    var service_level = $(".print_service_level").text();
+    var price = "";
+    $(".summary_service_level").text(service_level);
+    if($("#sel_Country option:selected").val() === "USA") {
+      price = $(".slusaprintprice").text();
+    }
+    else if($("#sel_Country option:selected").val() === "CANADA") {
+      price = $(".slcanprintprice").text();
+    }
+    else {
+      price = $(".slintprintprice").text();
+    }
+    $(".slprice").text(price);
+  }
+  else if($("#offerdigital").is(":checked")) {
+    var service_level = $(".digital_service_level").text();
+    var price = $(".sldigitalprice").text();
+    $(".summary_service_level").text(service_level);
+    $(".slprice").text(price);
+  }
+}
+function formatNumber(num) {
+  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+}
+</script>
+<style type="text/css">
+html,
+body {
+  font-family: Calluna, Georgia, serif;
+  font-size: 16px;
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+.panel-body {
+  text-align: left;
+}
+h1 {
+  font-family: Mallory, Helvetica, sans-serif;
+  font-size: 2.5em;
+  color: #000;
+  margin-top: 0;
+}
+h2 {
+  font-family: Mallory, Helvetica, sans-serif;
+  font-size: 1.3em;
+  font-weight: bold;
+  text-align: left;
+  color: #000;
+}
+.panel-heading h2 {
+  margin: 0;
+}
+.subhead {
+  font-size: 1.25em;
+  line-height: 1.5;
+}
+label,
+.mjm-form .radios label {
+  font-family: Mallory, Helvetica, sans-serif;
+  font-weight: bold;
+}
+.caps {
+  text-transform: uppercase;
+}
+.btn {
+  padding: 0.875em 1.75em;
+  background-color: #6C757D;
+  border: none;
+  border-radius: .375em;
+  font: bold 1em/1 Mallory, Helvetica, sans-serif;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.btn:hover {
+  background-color: #aaa;
+}
+.btn-primary {
+  padding: 1.25em 2.5em;
+  background-color: #ff6900;
+}
+.container-fluid .container {
+  width: 100%;
+}
+#header {
+  margin: 1em 0 0;
+  border-bottom: none;
+}
+#header svg {
+  fill: #ff6900;
+  margin: 0.5em auto;
+  max-width: 300px;
+}
+#sl_options {
+  margin-bottom: 2em;
+}
+.other_option_container {
+  text-align: left;
+  padding-left: 30px;
+}
+.other_option_container input[type="checkbox"] {
+  display: none;
+}
+.other_option_container .radio {
+  padding-top: 0;
+  margin-top: -1em;
+}
+.other_option_container .label_text {
+  display: inline-block;
+  width: 20%;
+  font-weight: bold;
+  position: relative;
+  top: -26px;
+}
+.other_option_container .other_option_input {
+  display: inline-block;
+  width: 60%;
+  text-align: left;
+}
+.other_option_container .other_option_label {
+  font-size: 14px;
+  font-weight: 700;
+}
+.other_option_container .icon {
+  float: left;
+  position: relative;
+  top: 27px;
+  padding-right: 3px;
+}
+.other_option_container .other_option_input input {
+  width: 80%;
+  margin: 0;
+  padding: 0 0 0 10px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #000;
+}
+#div_yes {
+  display: none;
+}
+#div_address1 label {
+  margin-top: -11px;
+}
+#div_country .col-sm-8 {
+  padding-left: 8px;
+}
+#sel_Country {
+  height: 34px;
+  margin-bottom: 1em;
+}
+#cc_row {
+  padding-left: 1.5em;
+}
+#cvvCode,
+#cvv_info_launcher {
+  float: left;
+}
+#cvv_info_launcher {
+  padding-top: 5px;
+}
+#div_expire {
+  margin-bottom: 1em;
+}
+#div_cvvCode .col-sm-8 {
+  margin-bottom: 1em !important;
+}
+.summary_line {
+  font-size: 1.5em;
+}
+#auto-renew-text {
+  margin-bottom: 1em;
+}
+#sslseal {
+  margin: 1em auto;
+}
+.save {
+  background-color: #fff;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 0;
+}
+.cc_logo {
+  cursor: pointer;
+  display: inline-block;
+  float: left;
+}
+#offer_paypal_button {
+  display: inline-block;
+  float: left;
+  margin-left: 1em;
+  position: relative;
+  top: 9px;
+}
+#offer_paypal_button img {
+  width: auto;
+  height: 42px;
+}
+#paypal_select_button {
+  border-radius: 5px;
+}
+#cc_row .disabled {
+  opacity: 0.25;
+}
+#div_credit {
+  margin-top: 1em;
+}
+#stepone,
+#steptwo {
+  font-size: 1.25em;
+  margin-bottom: 0;
+  padding-top: 0.5em;
+  font-weight: bold;
+}
+#payment_divide_text {
+  margin-bottom: 0;
+}
+#disclaimer-text {
+  border-top: 1px solid #ccc;
+  padding-top: 0.5em;
+  text-align: left;
+}
+#disclaimer-text p {
+  text-align: left;
+  font-size: 0.85em;
+  color: #666;
+}
+.panel-body {
+  padding: 1em 0 0;
+}
+.totals-div {
+  border: none;
+  box-shadow: none;
+  margin-bottom: 0;
+}
+.totals-div .panel-body {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.totals-div p {
+  font-family: Mallory, Helvetica, sans-serif;
+  font-size: 1.3em;
+  font-weight: bold;
+}
+#previewTotalsCol1 p {
+  padding-left: 0;
+}
+#previewTotalsCol2 p {
+  padding-right: 0;
+}
+.confirm-div {
+  margin-top: 1em;
+}
+.confirm-div .panel-body {
+  padding: 1em;
+}
+@media screen and (max-width:784px) {
+  #div_lastName label {
+    padding-left: 0;
+  }
+}
+@media screen and (min-width:768px) {
+  #div_businessName .col-sm-9,
+  #div_address1 .col-sm-9,
+  #div_address2 .col-sm-9,
+  #div_email .col-sm-9 {
+    padding-left: 5px;
+    padding-right: 0;
+  }
+  #div_lastName .col-sm-8 {
+    padding-right: 0;
+  }
+  #div_firstName,
+  #div_lastName,
+  #div_city,
+  #div_state,
+  #div_zip,
+  #div_country {
+    margin-bottom: 0;
+  }
+  #div_firstName label {
+    padding-right: 5px;
+  }
+  #div_credit label,
+  #div_cvvCode label,
+  #div_expire label {
+    padding-left: 0;
+    margin-left: -20px;
+  }
+  #div_credit .col-sm-8,
+  #div_cvvCode .col-sm-8,
+  #div_expire .col-sm-8 {
+    padding-left: 0;
+  }
+  #errorContain {
+    margin-left: 10em;
+    max-width: 700px;
+  }
+}
+@media screen and (max-width:980px) {
+  #div_credit label,
+  #div_cvvCode label,
+  #div_expire label {
+    margin-left: 0;
+  }
+  #offer_paypal_button {
+    margin-bottom: 1em;
+  }
+}
+@media screen and (max-width:767px) {
+  h1 {
+    font-size: 1.75em;
+    margin-top: 0;
+  }
+  #sl_options {
+    margin-bottom: 1em;
+  }
+  #sl_options label {
+    margin-bottom: 1.25em;
+  }
+  #sl_options img {
+    max-width: 35%;
+    margin-bottom: 0.35em;
+  }
+  #new-group label {
+    width: 100%;
+    text-align: left;
+  }
+  #div_firstName,
+  #div_lastName,
+  #div_businessName,
+  #div_address1,
+  #div_address2,
+  #div_city,
+  #div_state,
+  #div_zip,
+  #div_country,
+  #payment_divide_text {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #div_lastName,
+  #div_state,
+  #div_country,
+  #div_zip {
+    margin-bottom: 0;
+  }
+  #div_email,
+  #contain_payment {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #div_credit {
+    margin-top: 1em;
+  }
+  #div_lastName label {
+    padding-left: 15px;
+  }
+  #div_country .col-sm-8 {
+    padding-left: 15px;
+  }
+  .other_option_container {
+    margin-bottom: 2.5em;
+  }
+  .other_option_container,
+  .other_option_container .radio label {
+    padding-left: 0;
+  }
+  .other_option_container .label_text {
+    padding: 0;
+    position: static;
+    width: 30%;
+  }
+  .other_option_container .icon {
+    top: 32px;
+  }
+  .other_option_container .open_don_text {
+    position: relative;
+    top: 25px;
+  }
+  .cc_logo {
+    padding: 0;
+    margin: 0;
+    position: relative;
+    left: -5px;
+  }
+  #offer_paypal_button {
+    clear: both;
+    padding-left: 10px;
+    margin-bottom: 1em;
+  }
+  #div_cvvCode {
+    margin-bottom: 15px;
+  }
+  #errorContain {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+}
+@media screen and (min-width:888px) {
+  #div_lastName .col-sm-8 {
+    padding-right: 5px;
+  }
+}
+@media screen and (min-width:926px) {
+  #div_lastName .col-sm-8 {
+    padding-right: 15px;
+  }
+}
+@media screen and (min-width:950px) {
+  #cvv_info {
+    margin-left: 9.5em;
+  }
+}
+</style>
