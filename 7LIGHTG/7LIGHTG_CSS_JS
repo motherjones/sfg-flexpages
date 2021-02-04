@@ -1,0 +1,869 @@
+<link rel="icon" href="../../images/favicon-32x32.png" sizes="32x32">
+<meta name="description" content="Help Mother Jones' reporters dig deep with a tax-deductible donation." />
+<meta name="og:description" content="Help Mother Jones' reporters dig deep with a tax-deductible donation." />
+<meta name="og:title" content="Support Nonprofit Journalism - Donate to Mother Jones" />
+<meta name="og:image" content="https://ssl.drgnetwork.com/ecom/MOJ/images/mj-logo-social.jpg" />
+<script type="text/javascript">
+$(document).ready(function()
+{
+	$(document).prop("title", "Support Nonprofit Journalism - Donate to Mother Jones");
+  // if this is not the default for this page type, make sure google knows which primary page to index.
+  if (window.location.href.indexOf("7DONATE") == -1) {
+    $('head').append('<link rel="canonical" href="https://secure.motherjones.com/flex/mj/key/7DONATE/" />');
+  }
+  default_style();
+  $("#form_col").removeClass("col-sm-6 col-sm-pull-6").addClass("col-sm-12");
+  $("<div id='new-group'></div>").insertBefore("#div_businessName");
+  $("<div class='col-sm-12 form-group' id='div_first_last'></div>").appendTo("#new-group");
+  $("#div_firstName").appendTo("#div_first_last");
+  $("#div_firstName label").removeClass("col-sm-3").addClass("col-sm-4");
+  $("#div_firstName").addClass("col-sm-6");
+  $("#div_lastName").insertAfter("#div_firstName");
+  $("#div_lastName").addClass("col-sm-6");
+  $("#div_lastName label").removeClass("col-sm-3").addClass("col-sm-4");
+  $("#div_businessName").insertAfter("#div_first_last").addClass("col-sm-12");
+  $("#div_businessName label").removeClass("col-sm-3").addClass("col-sm-2");
+  $("#div_businessName .col-sm-8").removeClass("col-sm-8").addClass("col-sm-9");
+  $("#div_address1").insertAfter("#div_businessName").addClass("col-sm-12");
+  $("#div_address1 label").removeClass("col-sm-3").addClass("col-sm-2");
+  $("#div_address1 .col-sm-8").removeClass("col-sm-8").addClass("col-sm-9");
+  $("#div_address2").insertAfter("#div_address1").addClass("col-sm-12");
+  $("#div_address2 label").removeClass("col-sm-3").addClass("col-sm-2").text("Address 2");
+  $("#div_address2 .col-sm-8").removeClass("col-sm-8").addClass("col-sm-9");
+  $("<div class='col-sm-12 form-group' id='div_city_state'></div>").appendTo("#new-group");
+  $("#div_city").appendTo("#div_city_state").addClass("col-sm-6");
+  $("#div_city label").removeClass("col-sm-3").addClass("col-sm-4");
+  $("#div_state").insertAfter("#div_city").addClass("col-sm-6");
+  $("#div_state label").removeClass("col-sm-3").addClass("col-sm-4");
+  $("<div class='col-sm-12 form-group' id='div_zip_country'></div>").appendTo("#new-group");
+  $("#div_zip").appendTo("#div_zip_country").addClass("col-sm-6");
+  $("#div_zip label").removeClass("col-sm-3").addClass("col-sm-4").text("Zip");
+  $("#div_country").insertAfter("#div_zip").addClass("col-sm-6");
+  $("#div_country label").removeClass("col-sm-3").addClass("col-sm-4");
+  $("#div_email").insertAfter("#div_zip_country").addClass("col-sm-12");
+  $("#div_email label").removeClass("col-sm-3").addClass("col-sm-2");
+  $("#div_email .col-sm-8").removeClass("col-sm-8").addClass("col-sm-9");
+  $("#contain_payment").insertAfter("#div_email").addClass("col-sm-9");
+  $("#contain_payment hr").remove();
+  $("#offer_paypal_button label").remove();
+  $("#offer_paypal_button div").removeClass("col-sm-8");
+  $("#pay_with_paypal").remove();
+  $("#cc_paypal_divider").remove();
+  $(".cc_logo").parent().removeClass("col-sm-offset-3").addClass("col-sm-offset-1").prop("id", "cc_row");
+  $(".cc_logo").remove();
+  $("#cc_row").html("<img class='cc_logo' src='../../images/cc_combined.png' alt='credit card logos'/>");
+  $("#offer_paypal_button").appendTo("#cc_row");
+  $("#sslseal").insertAfter("#submit1");
+  $("#submit1").removeClass("col-xs-offset-6");
+  $("#div_credit").hide();
+  $("#div_cvvCode").hide();
+  $("#div_expire").hide();
+  $(".summary_line").insertBefore("#submit1").hide();
+  $("#submit1").hide();
+  $("#sslseal").hide();
+  $("#offers").remove();
+  $("#offer_col").remove();
+  $("#div_yes").remove();
+  $(".panel-primary").eq(2).addClass("totals-div");
+  $(".totals-div .panel-heading").remove();
+  $("#previewTotalsCol1 p").hide();
+  $("#previewTotalsCol1 p").eq(3).show();
+  $("#previewTotalsCol2 p").hide();
+  $("#previewTotalsCol2 p").eq(3).show();
+  $("button[name=submit_all]").text("Continue to Confirmation");
+  $("button[name=process]").text("Submit Donation");
+  $("#div_businessName").remove();
+  $("#ssl_seal").insertAfter("#submit1");
+  $("#errorContain").prependTo("#form_col");
+  $('#accept_offer_button').removeClass('pull-right');
+  $('#decline_offer_button').removeClass('pull-left btn');
+  $('#accept_offer_button').html($('#accept_offer_text').html());
+  $('#decline_offer_button').html($('#deny_offer_text').html());
+  $('#cancel_text').insertAfter($('#upsell_offer_div').find('.modal-content-border'));
+  $('#accept_offer_text').remove();
+  $('#deny_offer_text').remove();
+		//This is the code that unselects $15 and selects $5 on page load
+	$('#one_time_donations').find(".radio").removeClass("active");
+	$('#MOJRD-SINGLE-OT050').removeAttr("checked");
+	$('#MOJRD-SINGLE-OT035').attr("checked", "checked");
+	$('#MOJRD-SINGLE-OT035').closest(".radio").addClass("active");
+  //end code
+  
+  if (pagemode == 'preview') {
+	  $("#accept_offer_button, #decline_offer_button").insertAfter(".div_p1");
+  }
+
+  // handle back button correctly
+  if($('#paypal_checkbox').is(':checked')) {
+    disable_cc();
+    show_submit();
+    $('#paypal_img').prop('src','../../images/paypal_checkbox_img_responsive_checked.png');
+  }
+
+  $(".cc_logo").click(function() {
+    enable_cc();
+    show_submit();
+    $('#paypal_img').prop('src','../../images/paypal_checkbox_img_responsive.png');
+  });
+  $("#paypal_select_button").click(function() {
+    disable_cc();
+    show_submit();
+    $('#paypal_img').prop('src','../../images/paypal_checkbox_img_responsive_checked.png');
+  });
+
+  function disable_cc() {
+    $('#paypal_checkbox').prop('checked', true);
+    $('#paypal_img').removeClass('disabled')
+    $(".cc_logo").addClass('disabled');
+    $("#div_credit").hide();
+    $("#div_cvvCode").hide();
+    $("#div_expire").hide();
+    $('#credit').prop('disabled',true);
+    $('#cvvCode').prop('disabled',true);
+    $("select[name='ExpireMonth']").prop('disabled',true);
+    $("select[name='ExpireYear']").prop('disabled',true);
+  }
+
+  function enable_cc() {
+    $('#paypal_checkbox').prop('checked', false);
+    $('#paypal_img').addClass('disabled');
+    $(".cc_logo").removeClass('disabled');
+    $("#div_credit").show();
+    $("#div_cvvCode").show();
+    $("#div_expire").show();
+    $('#credit').prop('disabled',false);
+    $('#cvvCode').prop('disabled',false);
+    $("select[name='ExpireMonth']").prop('disabled',false);
+    $("select[name='ExpireYear']").prop('disabled',false);
+  }
+
+  function show_submit() {
+    $(".summary_line").show();
+    $("#submit1").show();
+    $("#sslseal").show();
+  }
+
+  if ($("#open_donation_MOJRD-SUSTAINER-RDOPEN").val().length !== 0 ||
+    $("#open_donation_MOJRD-SINGLE-OTOPEN").val().length !== 0) {
+    show_other_amount();
+  }
+  $(".other_amt_trigger").on("click", function() {
+    show_other_amount();
+  });
+
+  $("input[name=qty_sp]").on("click", function() {
+    var amount = $(this).parent().text();
+    $(".other_amt_trigger input[type='radio']").prop("checked", false);
+    $(".other_option_container").hide();
+    $(".other_amt_trigger").removeClass("active-style");
+    $(".for_don_other_don_term").removeClass("active");
+    $(".for_sdn_other_don_term").removeClass("active");
+    $(".total_amount").text(amount);
+  });
+
+  $(".for_don_other_don_term, #open_donation_MOJRD-SINGLE-OTOPEN").on("click", function() {
+    var amount = $("#open_donation_MOJRD-SINGLE-OTOPEN").val();
+    $(".for_don_other_don_term").addClass("active");
+    $(".total_amount").text("$" + amount);
+    $(".other_option_container").show();
+    $(".other_amt_trigger").addClass("active-style");
+    $("#don_other_don_term").trigger("click");
+  });
+
+  $(".for_sdn_other_don_term, #open_donation_MOJRD-SUSTAINER-RDOPEN").on("click", function() {
+    var amount = $("#open_donation_MOJRD-SUSTAINER-RDOPEN").val();
+    $(".for_sdn_other_don_term").addClass("active");
+    $(".total_amount").text("$" + amount);
+    $(".other_option_container").show();
+    $(".other_amt_trigger").addClass("active-style");
+    $("#sdn_other_don_term").trigger("click");
+  });
+
+  $("#open_donation_MOJRD-SUSTAINER-RDOPEN").on("input", function() {
+    var amount = $("#open_donation_MOJRD-SUSTAINER-RDOPEN").val();
+    $(".total_amount").text("$" + formatNumber(amount));
+  });
+  $("#open_donation_MOJRD-SINGLE-OTOPEN").on("input", function() {
+    var amount = $("#open_donation_MOJRD-SINGLE-OTOPEN").val();
+    $(".total_amount").text("$" + formatNumber(amount));
+  });
+  $("#don_other_don_term").on("click", function() {
+    if($("#don_other_don_term").is(":checked")) {
+      var amount = $("#don_other_donation_amt").val();
+      $(".total_amount").text("$" + formatNumber(amount));
+    }
+  });
+  $("#open_donation_MOJRD-SINGLE-OTOPEN").on("click", function() {
+    if($("#open_donation_MOJRD-SINGLE-OTOPEN").is(":checked")) {
+      var amount = $("#sdn_other_donation_amt").val();
+      $(".total_amount").text("$" + formatNumber(amount));
+    }
+  });
+  $("#btn_don").on("click", function() {
+    $("#btn_sdn").removeClass("active");
+    $("#btn_don").addClass("active");
+    $("#monthly_donations").hide();
+    $("#one_time_donations").show();
+    $(".frequency").text("once");
+    $(".total_amount").text("$0.00");
+    unselect_all();
+  });
+  $("#btn_sdn").on("click", function() {
+    $("#btn_don").removeClass("active");
+    $("#btn_sdn").addClass("active");
+    $("#one_time_donations").hide();
+    $("#monthly_donations").show();
+    $(".frequency").text("monthly");
+    $(".total_amount").text("$0.00");
+    unselect_all();
+  });
+});
+function default_style() {
+  $(".other_option_container").hide();
+  $("#monthly_donations").hide();
+  $("#one_time_donations").show();
+}
+function show_other_amount() {
+  $(".other_option_container").show();
+  $("input[name=qty_sp]").prop("checked", false);
+  $(".other_amt_trigger").addClass("active-style");
+}
+function unselect_all() {
+  $(".flexsp").prop("checked", false);
+  $(".other_amt_trigger").removeClass("active-style");
+  $(".other_option_container").hide();
+  $(".open_donations").prop("value", "");
+}
+function formatNumber(num) {
+  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+}
+</script>
+<style type="text/css">
+#div_yes {
+  display: none;
+}
+.save {
+  background-color: #fff;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 0px;
+}
+.container-fluid .container {
+  width: 100%;
+}
+html,
+body {
+  font-family: Calluna, Georgia, serif;
+  font-size: 16px;
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+#main {
+  margin-bottom: 3em;
+}
+.panel-body {
+  text-align: left;
+}
+h1 {
+  font-family: Mallory, Helvetica, sans-serif;
+  font-size: 2.5em;
+  color: #000;
+  margin-top: 0;
+}
+h2,
+h4.modal-title {
+  font-family: Mallory, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: left;
+  color: #000;
+}
+.panel-heading h2 {
+  margin: 0;
+}
+.subhead {
+  font-size: 1.25em;
+  line-height: 1.5;
+}
+h5,
+.h5,
+label,
+.mjm-form .radios label,
+#payment_divide_text {
+  font-family: Mallory, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  color: #000;
+}
+label {
+  font-family: Mallory, Helvetica, sans-serif;
+  font-weight: bold;
+}
+.caps {
+  text-transform: uppercase;
+}
+.btn {
+  padding: 0.875em 1.75em;
+  background-color: #6C757D;
+  border: none;
+  border-radius: .375em;
+  font: bold 1em/1 Mallory, Helvetica, sans-serif;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.btn:hover {
+  background-color: #aaa;
+}
+.btn-primary {
+  padding: 1.25em 2.5em;
+  background-color: #ff6900;
+}
+#header {
+  margin: 1em 0 0;
+  border-bottom: none !important;
+}
+#header svg {
+  fill: #ff6900;
+  margin: 0.5em auto;
+  max-width: 300px;
+}
+#sel_Country {
+  height: 34px;
+}
+#cvvCode,
+#cvv_info_launcher {
+  float: left;
+}
+#cvv_info_launcher {
+  padding-top: 5px;
+}
+#div_expire {
+  margin-bottom: 1em;
+}
+#div_cvvCode .col-sm-8 {
+  margin-bottom: 1em !important;
+}
+.cc_logo {
+  cursor: pointer;
+  display: inline-block;
+  float: left;
+}
+#offer_paypal_button {
+  display: inline-block;
+  float: left;
+  margin-left: 1em;
+  position: relative;
+  top: 9px;
+}
+#offer_paypal_button img {
+  width: auto;
+  height: 42px;
+}
+#paypal_select_button {
+  border-radius: 5px;
+}
+#cc_row .disabled {
+  opacity: 0.25;
+}
+#div_credit {
+  padding-top: 1em;
+  clear: both;
+}
+#payment_divide_text {
+  margin-bottom: 0;
+}
+#outer_donation_container .col-sm-2,
+#outer_donation_container .other_option_container {
+  padding-right: 0;
+}
+#open_donation_MOJRD-SINGLE-OTOPEN,
+#open_donation_MOJRD-SUSTAINER-RDOPEN {
+  margin-top: -25px;
+  margin-left: 15px;
+}
+.custom_donation_radios {
+  height: auto;
+  margin-bottom: 5px;
+}
+.custom_donation_radios .radio {
+  display: inline-block;
+  width: 100%;
+  height: 100px;
+  margin: 0;
+  float: left;
+}
+.custom_donation_radios .radio > label {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+.custom_donation_radios .radio input[type="radio"] {
+  display: none;
+}
+.custom_donation_radios .radio_label {
+  display: block;
+  width: 100%;
+  color: #aaa;
+  background-color: #fff;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border: 1px solid #aaa;
+}
+.custom_donation_radios .label_text {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 34px 5px 34px 5px;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+}
+.custom_donation_radios .other_amt_trigger .label_text {
+  padding: 23px 5px;
+}
+.custom_donation_radios .radio input[type="radio"]:checked + .radio_label,
+.other_amt_trigger.active-style input[type="radio"] + .radio_label {
+  color: #fff;
+  background-color: #ff6900;
+  border: 1px solid #ff6900;
+}
+.other_option_container {
+  display: inline-block;
+  width: 100%;
+  height: 43px;
+  float: left;
+}
+.other_option_container .radio {
+  padding: 5px 0 0;
+  height: auto;
+}
+.other_option_container .radio_label.for_don_other_don_term,
+.other_option_container .radio_label.for_sdn_other_don_term  {
+  background-color: #ff6900;
+  border: 1px solid #ff6900;
+  color: #fff;
+}
+.other_option_container .label_text {
+  display: inline-block;
+  width: 40%;
+  padding: 12px;
+  text-align: center;
+}
+.other_option_container .other_option_input {
+  display: inline-block;
+  width: 60%;
+  text-align: left;
+  margin-top: 12px;
+  float: right;
+}
+.other_option_container .other_option_label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+}
+.other_option_container .other_option_input input {
+  width: 80%;
+  margin: 0;
+  padding: 0 0 0 10px;
+  border: none;
+  outline: none;
+  background-color: white;
+  font-size: 16px;
+  font-weight: 700;
+  color: #000;
+}
+.row .donation-recurring {
+  padding-right: 20px;
+  text-align: top;
+}
+.btn.btn-donation-recurring {
+  font-size: 16px;
+  font-weight: 700;
+  outline: none !important;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border: 1px solid #aaa;
+  color: #aaa;
+  background-color: #fff;
+  float: left;
+}
+.btn.btn-donation-recurring + .btn.btn-donation-recurring {
+  margin-left: 6px;
+}
+.btn.btn-donation-recurring.active {
+  outline: none !important;
+  color: #fff;
+  background-color: #ff6900;
+  border: 1px solid #ff6900;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+#ssl_seal {
+  padding-bottom: 1em;
+}
+.summary_line {
+  font-size: 1.5em;
+  margin: 0.5em 0 0.75em;
+}
+#disclaimer-text {
+  border-top: 1px solid #ccc;
+  padding-top: 0.75em;
+  text-align: left;
+}
+#disclaimer-text ul {
+  list-style: none;
+  padding: 0;
+}
+#disclaimer-text p {
+  text-align: left;
+  font-size: 0.85em;
+  color: #666;
+  padding-left: 1em;
+}
+#disclaimer-text ul li {
+  display: inline-block;
+  text-align: left;
+  margin-left: 1em;
+  color: #666;
+}
+.panel-body {
+  padding: 1em 0 0;
+}
+.totals-div {
+  border: none;
+  box-shadow: none;
+  margin-bottom: 0;
+}
+.totals-div .panel-body {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.totals-div p {
+  font-family: Mallory, Helvetica, sans-serif;
+  font-size: 1.3em;
+  font-weight: bold;
+}
+.panel-body .col1 {
+  padding-left: 15px;
+}
+.panel-body .col2 {
+  padding-right: 15px;
+}
+.panel-body .col1,
+.panel-body .col2 {
+  font-size: 1em;
+}
+.confirm-div td {
+  padding: 0 0 1em;
+}
+.confirm-div {
+  margin-top: 1em;
+}
+.confirm-div .panel-body {
+  padding: 1em;
+}
+.order-confirmation {
+  text-align: left;
+}
+@media screen and (max-width:882px) {
+  #div_lastName .col-sm-8 {
+    padding-right: 5px;
+  }
+}
+@media screen and (min-width:768px) {
+  #errorContain {
+    max-width: 690px;
+    margin-bottom: 0;
+  }
+  #button_types {
+    max-width:720px;
+  }
+  #div_firstName label {
+    padding-left: 0;
+  }
+  #donation_header {
+    margin-left: 0em;
+    padding-left: 5px;
+    padding-left: 0;
+  }
+  #cvv_info {
+    margin-left:12.5em;
+  }
+  #div_address1 .col-sm-9,
+  #div_address2 .col-sm-9,
+  #div_email .col-sm-9 {
+    padding-left: 15px;
+    padding-right: 0;
+  }
+  #div_address1 label,
+  #div_address2 label,
+  #div_state label,
+  #div_country label,
+  #div_email label,
+  #div_businessName label {
+    margin-left: -10px;
+  }
+  #div_lastName {
+    padding-left: 0;
+    padding-right: 25px;
+  }
+  #div_lastName label {
+    padding-right: 10px;
+  }
+  #div_businessName .col-sm-9 {
+    padding-right: 0;
+  }
+  #div_firstName,
+  #div_lastName,
+  #div_city,
+  #div_state,
+  #div_zip,
+  #div_country {
+    margin-bottom: 0;
+  }
+  #div_credit label {
+    padding-left: 0;
+    margin-left: -20px;
+  }
+  #div_expire label {
+    margin-left: -20px;
+  }
+  #div_cvvCode .col-sm-8 {
+    margin-left: -5px;
+  }
+  #div_cvvCode label {
+    margin-left: -15px;
+  }
+  #btn_don,
+  #btn_sdn {
+    width: 95%;
+  }
+  .small_padding {
+    padding-left: 5px !important;
+  }
+}
+@media screen and (min-width:832px) {
+  #button_types {
+    max-width: 760px;
+  }
+  #upsell_offer_div .modal-dialog {
+		padding: 2em;
+  		padding-top:0em;
+	}
+}
+@media screen and (max-width:767px) {
+  h1 {
+    font-size: 1.75em;
+    margin-top: 0;
+  }
+  #new-group label {
+    text-align: left;
+    float: left;
+  }
+  #outer_donation_container .col-sm-2,
+  #outer_donation_container .other_option_container {
+    padding-right: 15px;
+  }
+  #div_firstName,
+  #div_lastName,
+  #div_businessName,
+  #div_address1,
+  #div_address2,
+  #div_city,
+  #div_state,
+  #div_zip,
+  #div_country {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #div_lastName,
+  #div_state,
+  #div_country {
+    margin-bottom: 0;
+  }
+  #div_email,
+  #contain_payment {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .btn {
+    width: 100%;
+  }
+  .custom_donation_radios .label_text,
+  .custom_donation_radios .other_amt_trigger .label_text {
+    padding: 0.875em 1.75em;
+  }
+  .custom_donation_radios .radio {
+    height: auto;
+    margin-bottom: 0.25em;
+  }
+  .donation_type {
+    padding-left:0;
+  }
+  #submit1 {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .cc_logo {
+    padding: 0;
+    margin: 0;
+    position: relative;
+    left: -5px;
+  }
+  #offer_paypal_button {
+    clear: both;
+    margin: 0 0 1em 0;
+  }
+  #div_cvvCode {
+    margin-bottom: 15px;
+  }
+  #div_cvvCode .col-sm-8,
+  #div_expire .col-sm-8 {
+    clear: both;
+  }
+  #disclaimer-text ul li {
+    display: block;
+    text-align: left;
+    padding: 0.5em 0;
+    margin: 0 0 0.5em;
+    font-size: 1.25em;
+  }
+  #disclaimer-text p {
+    text-align: left;
+    font-size: 0.85em;
+    color: #666;
+    padding-left: 0;
+  }
+  .margin_adjust {
+    margin-left: -5px;
+  }
+  #div_lastName .col-sm-8 {
+    padding-right: 15px;
+  }
+  #form_col {
+    padding-left: 10px;
+  }
+}
+.modal-body.preview_page_upsell_offer {
+	padding-top:0;
+	padding-bottom:0;
+}
+.preview_page_upsell_offer .div_thanks {
+	font-size: 9pt;
+    font-family: sans-serif;
+    font-weight: bold;
+    letter-spacing: .2em;
+}
+.preview_page_upsell_offer .div_p1,
+.preview_page_upsell_offer .div_p2 {
+	font-size: 13pt;
+    line-height: 1.4em;
+}
+.preview_page_upsell_offer .div_p1 {
+	padding-bottom: .5em;
+}
+.preview_page_upsell_offer .div_p2 {
+	padding-top: .5em;
+}
+	#decline_offer_button {
+		text-decoration: underline;
+		background: unset;
+		color: inherit;
+		border: none;
+		display: block;
+		margin: 0 auto;
+		max-width: 15em;
+	}
+	#accept_offer_button {
+		background-color: #ff6900;
+		max-width: 15em;
+		white-space: unset;
+		display: block;
+		margin: 0 auto;
+		margin-bottom: 1em;
+	    text-transform: inherit;
+	    font-size: 13pt;
+	    padding-left: 1em;
+	    padding-right: 1em;
+	    line-height: 1.3em;
+	    letter-spacing: .05em;
+		}
+	#upsell_offer_div .modal-content-border {
+		border: 1px solid black;
+		padding: 2em;
+		padding-bottom:1em;
+	}
+	#upsell_offer_div .modal-content {
+		padding: 2em;
+		paddint-
+	}
+	#upsell_offer_div .modal-footer {
+		padding: 0 0 0 0;
+    	border-top: none;
+	}
+	#upsell_offer_div .close {
+		position: relative;
+		top: -10px;
+		right: -6px;
+		background: black;
+		border-radius: 1em;
+		opacity: unset;
+		color: white;
+		width: 1em;
+		font-size: 35px;
+	}
+	#upsell_offer_div .times {
+		position: relative;
+		top: -2px;
+	}
+#upsell_offer_div .consider_header {
+	margin-top: 10px;
+    font-size: 30px;
+    letter-spacing: -1px;
+}
+#cancel_text {
+	padding-top: .5em;
+    font-size: 10pt;
+}
+
+@media screen and (max-width:767px) {
+	#upsell_offer_div .modal-content-border {
+	    padding: 1em;
+	}
+	#upsell_offer_div .modal-content {
+	    padding: 1em;
+	}
+	.modal-body.preview_page_upsell_offer {
+    	padding: 0;
+	}
+	#upsell_offer_div .consider_header {
+	    font-size: 18pt;
+		padding-bottom: .3em;
+	}
+	.preview_page_upsell_offer .div_p1,
+	.preview_page_upsell_offer .div_p2 {
+	    padding-left: 0em;
+		padding-right: 0em;
+    	font-size: 11.5pt;
+	}
+	
+	.preview_page_upsell_offer .div_p2 {
+		padding-top: 1em;
+	}
+	#accept_offer_button {
+	    max-width: 13.5em;
+	    padding-left: .7em;
+	    padding-right: .7em;
+	}
+	#cancel_text {
+	    padding-top: .75em;
+	    font-size: 9pt;
+	}
+}
+</style>
