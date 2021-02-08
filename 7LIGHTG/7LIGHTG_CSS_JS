@@ -82,10 +82,14 @@ $(document).ready(function()
   $('#cancel_text').insertAfter($('#upsell_offer_div').find('.modal-content-border'));
   $('#accept_offer_text').remove();
   $('#deny_offer_text').remove();
-		//This is the code that unselects $15 and selects $5 on page load
+	//Code to set default amount on page load.
+	//Remove the active class from all parent divs that have active class to reset all divs
 	$('#one_time_donations').find(".radio").removeClass("active");
+	//Remove the checked HTML input attribute from the incorrect amount
 	$('#MOJRD-SINGLE-OT050').removeAttr("checked");
+	//Add the checked HTML input attribute to the correct amount
 	$('#MOJRD-SINGLE-OT035').attr("checked", "checked");
+	//Add the 'active' class to the parent div of the correct dollar amount
 	$('#MOJRD-SINGLE-OT035').closest(".radio").addClass("active");
   //end code
   
