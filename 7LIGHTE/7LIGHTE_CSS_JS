@@ -4,14 +4,21 @@
 <meta name="og:title" content="Support Nonprofit Journalism - Donate to Mother Jones" />
 <meta name="og:image" content="https://ssl.drgnetwork.com/ecom/MOJ/images/mj-logo-social.jpg" />
 <script type="text/javascript">
+
+//This function executes all the commands once the HTML page has loaded completely
 $(document).ready(function()
 {
 	$(document).prop("title", "Support Nonprofit Journalism - Donate to Mother Jones");
   // if this is not the default for this page type, make sure google knows which primary page to index.
   if (window.location.href.indexOf("7DONATE") == -1) {
+		//This let's a search engine that this is the preferred url (if there are other variations of the url)
     $('head').append('<link rel="canonical" href="https://secure.motherjones.com/flex/mj/key/7DONATE/" />');
   }
   default_style();
+		/*
+	 * All the code here target specific element(s) on the page. For example, the first command is to remove the classes 'col-sm-6 col-sm-pull-6' then add the class 'col-sm-12'.
+	 * Here's a quick reference to what the '.', '#' mean: 1) A '.' before a word means that the command is targeting a class, so any HTML element that has an attribute of class="some-class" will be affected. For example, $(".cc_logo") is targeting any HTML element that has the attribute 'class="cc_logo"; 2) A '#' before a word means that command is targeting a specific 'id' of an HTML element. For example: In the first command the '$("#form_col")' is targeting the HTML element with the attribute 'id="form_col").
+	 */
   $("#form_col").removeClass("col-sm-6 col-sm-pull-6").addClass("col-sm-12");
   $("<div id='new-group'></div>").insertBefore("#div_businessName");
   $("<div class='col-sm-12 form-group' id='div_first_last'></div>").appendTo("#new-group");
@@ -92,7 +99,7 @@ $(document).ready(function()
 	//Add the 'active' class to the parent div of the correct dollar amount
 	$('#MOJRD-SINGLE-OT035').closest(".radio").addClass("active");
   //end code
-	
+
   if (pagemode == 'preview') {
 	  $("#accept_offer_button, #decline_offer_button").insertAfter(".div_p1");
   }
@@ -115,6 +122,7 @@ $(document).ready(function()
     $('#paypal_img').prop('src','../../images/paypal_checkbox_img_responsive_checked.png');
   });
 
+	//This function disables the credit card inputs and enables paypal
   function disable_cc() {
     $('#paypal_checkbox').prop('checked', true);
     $('#paypal_img').removeClass('disabled');
@@ -128,6 +136,7 @@ $(document).ready(function()
     $("select[name='ExpireYear']").prop('disabled',true);
   }
 
+	//This function enables all credit card input and disablew paypal
   function enable_cc() {
     $('#paypal_checkbox').prop('checked', false);
     $('#paypal_img').addClass('disabled');
@@ -147,6 +156,7 @@ $(document).ready(function()
     $("#sslseal").show();
   }
 
+	//This checks if the "Other Amount->Enter Amount" value is not equal to 0
   if ($("#open_donation_MOJRD-SUSTAINER-RDOPEN").val().length !== 0 ||
     $("#open_donation_MOJRD-SINGLE-OTOPEN").val().length !== 0) {
     show_other_amount();
@@ -155,6 +165,7 @@ $(document).ready(function()
     show_other_amount();
   });
 
+	//This hides the "Enter Amount" input box if a preset amount is chosen instead
   $("input[name=qty_sp]").on("click", function() {
     var amount = $(this).parent().text();
     $(".other_amt_trigger input[type='radio']").prop("checked", false);
@@ -165,6 +176,7 @@ $(document).ready(function()
     $(".total_amount").text(amount);
   });
 
+	//This adds the class "active" to the parent container of the preset amount donation options
   $(".for_don_other_don_term, #open_donation_MOJRD-SINGLE-OTOPEN").on("click", function() {
     var amount = $("#open_donation_MOJRD-SINGLE-OTOPEN").val();
     $(".for_don_other_don_term").addClass("active");
@@ -183,6 +195,7 @@ $(document).ready(function()
     $("#sdn_other_don_term").trigger("click");
   });
 
+	//The next four commands grab the donation amounts
   $("#open_donation_MOJRD-SUSTAINER-RDOPEN").on("input", function() {
     var amount = $("#open_donation_MOJRD-SUSTAINER-RDOPEN").val();
     $(".total_amount").text("$" + formatNumber(amount));
@@ -203,6 +216,7 @@ $(document).ready(function()
       $(".total_amount").text("$" + formatNumber(amount));
     }
   });
+	//These two commands switch between one time donation and sustaining donation
   $("#btn_don").on("click", function() {
     $("#btn_sdn").removeClass("active");
     $("#btn_don").addClass("active");
@@ -222,6 +236,8 @@ $(document).ready(function()
     unselect_all();
   });
 });
+//End of on load event
+
 function default_style() {
   $(".other_option_container").hide();
   $("#monthly_donations").hide();
@@ -239,7 +255,7 @@ function unselect_all() {
   $(".open_donations").prop("value", "");
 }
 function formatNumber(num) {
-  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 }
 </script>
 <style type="text/css">
@@ -856,7 +872,7 @@ label {
 		padding-right: 0em;
     	font-size: 11.5pt;
 	}
-	
+
 	.preview_page_upsell_offer .div_p2 {
 		padding-top: 1em;
 	}
