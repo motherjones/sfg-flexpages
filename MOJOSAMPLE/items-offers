@@ -1,0 +1,33 @@
+combo:
+    selector
+Print  & Digital <br /> @@YEARS Year <br /> @@TERMISSUES issues for @@PRICE
+    presentation
+<p><img src="/ecom/moj/images/ma-mj_cover-table-tablet_08192020.jpg" data-image="z4liqawq92ie"></p>
+@@OFFERSELECTOR
+
+print
+    selector
+Print Only <br /> @@YEARS Year <br /> @@TERMISSUES issues for @@PRICE
+    presentation
+    <p><img src="/ecom/moj/images/MJ_SO2020_Cover_v2.jpg" data-image="vm14zw6f3dvk"></p>
+@@OFFERSELECTOR
+
+digital
+    selector
+Digital Only <br /> @@YEARS Year <br /> @@TERMISSUES issues for @@PRICE
+    presentation
+<p><img src="/ecom/moj/images/JA-cover_tablet_08192020_v2.jpg" data-image="8oabx80lco5p"></p>
+@@OFFERSELECTOR
+
+donation
+    presentation
+<div class="col-sm-12 other_option_container" id="one_time_outer_div">
+	<h2 class="font-weight-bold">Additional Donation</h2>
+	<p>
+            YES! I would like to make an additional donation to support 
+	    <em>Mother Jones's</em> hard-hitting, nonprofit investigative journalism.
+	</p>
+	@@OFFERSELECTOR
+</div>
+preview
+Add-on&nbsp;Donation

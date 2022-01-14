@@ -1,0 +1,222 @@
+<link rel="icon" href="../../images/favicon-32x32.png" sizes="32x32">
+<meta name="description" content="Subscribe to our magazine for the hard-hitting stories that others in the media are ignoring. Subscribe today and get a full year of Mother Jones for just $12!" />
+<meta name="og:description" content="Subscribe to our magazine for the hard-hitting stories that others in the media are ignoring. Subscribe today and get a full year of Mother Jones for just $12!" />
+<meta name="og:image" content="https://ssl.drgnetwork.com/ecom/MOJ/images/mj-logo-social.jpg" />
+
+<style>
+		body { 
+		font-family: Calluna, Georgia, serif;
+		font-size: 16px;
+	}
+
+#sslseal, #sslseal a
+{
+	text-align:center;
+}
+h1, h2
+{
+	font-family:Mallory, Helvetica, sans-serif;
+}
+	h1 { font-weight: 700; }
+.subhead
+{
+	font-family:Calluna, Georgia, serif;
+	font-size:1.25em;
+}
+#one_time_outer_div p, .summary_line
+{
+		font-family:Calluna, Georgia, serif;
+}
+ @font-face {
+   font-family: 'Mallory';
+   src:  url('https://www.motherjones.com/wp-content/themes/motherjones/font/mallory/mallory-light.woff2') format('woff2'),
+         url('https://www.motherjones.com/wp-content/themes/motherjones/font/mallory/mallory-light.woff') format('woff'),
+         url('https://www.motherjones.com/wp-content/themes/motherjones/font/mallory/mallory-light.otf') format('opentype');
+   font-weight: normal;
+   font-style: normal;
+ }
+ @font-face {
+   font-family: 'Mallory';
+   src:  url('https://www.motherjones.com/wp-content/themes/motherjones/font/mallory/mallory-bold.woff2') format('woff2'),
+         url('https://www.motherjones.com/wp-content/themes/motherjones/font/mallory/mallory-bold.woff') format('woff'),
+         url('https://www.motherjones.com/wp-content/themes/motherjones/font/mallory/mallory-bold.otf') format('opentype');
+   font-weight: bold;
+   font-style: normal;
+ }
+ @font-face {
+   font-family: 'Mallory';
+   src:  url('https://www.motherjones.com/wp-content/themes/motherjones/font/mallory/mallory-light-italic.woff2') format('woff2'),
+         url('https://www.motherjones.com/wp-content/themes/motherjones/font/mallory/mallory-light-italic.woff') format('woff'),
+         url('https://www.motherjones.com/wp-content/themes/motherjones/font/mallory/mallory-light-italic.otf') format('opentype');
+   font-weight: normal;
+   font-style: italic;
+ }
+ @font-face {
+   font-family: 'Mallory';
+   src:  url('https://www.motherjones.com/wp-content/themes/motherjones/font/mallory/mallory-bold-italic.woff2') format('woff2'),
+         url('https://www.motherjones.com/wp-content/themes/motherjones/font/mallory/mallory-bold-italic.woff') format('woff'),
+         url('https://www.motherjones.com/wp-content/themes/motherjones/font/mallory/mallory-bold-italic.otf') format('opentype');
+   font-weight: bold;
+   font-style: italic;
+ }
+	 @font-face {
+   font-family: 'Calluna';
+   src:  url('https://www.motherjones.com/wp-content/themes/motherjones/font/calluna/calluna-regular.woff2') format('woff2'),
+         url('https://www.motherjones.com/wp-content/themes/motherjones/font/calluna/calluna-regular.woff') format('woff'),
+         url('https://www.motherjones.com/wp-content/themes/motherjones/font/calluna/calluna-regular.otf') format('opentype');
+   font-weight: normal;
+   font-style: normal;
+ }
+ @font-face {
+   font-family: 'Calluna';
+   src:  url('https://www.motherjones.com/wp-content/themes/motherjones/font/calluna/calluna-black.woff2') format('woff2'),
+         url('https://www.motherjones.com/wp-content/themes/motherjones/font/calluna/calluna-black.woff') format('woff'),
+         url('https://www.motherjones.com/wp-content/themes/motherjones/font/calluna/calluna-black.otf') format('opentype');
+   font-weight: bold;
+   font-style: normal;
+ }
+ @font-face {
+   font-family: 'Calluna';
+   src:  url('https://www.motherjones.com/wp-content/themes/motherjones/font/calluna/calluna-italic.woff2') format('woff2'),
+         url('https://www.motherjones.com/wp-content/themes/motherjones/font/calluna/calluna-italic.woff') format('woff'),
+         url('https://www.motherjones.com/wp-content/themes/motherjones/font/calluna/calluna-italic.otf') format('opentype');
+   font-weight: normal;
+   font-style: italic;
+ }
+ @font-face {
+   font-family: 'Calluna';
+   src:  url('https://www.motherjones.com/wp-content/themes/motherjones/font/calluna/calluna-bold-italic.woff2') format('woff2'),
+         url('https://www.motherjones.com/wp-content/themes/motherjones/font/calluna/calluna-bold-italic.woff') format('woff'),
+         url('https://www.motherjones.com/wp-content/themes/motherjones/font/calluna/calluna-bold-italic.otf') format('opentype');
+   font-weight: bold;
+   font-style: italic;
+ }
+	.offer_selector_control .offer_options li { font-size: 16px; text-align: center; padding-left: 0;}
+	.form-check.offer_selector.active input { display: none; }
+	.offer_auto_trans_container { font-size: 16px; text-align: center; }
+	.row_1 .offer_selector_control { display: block; }
+	.next_button_control button,
+	.order_button_control button,
+	.prev_button_control button,
+	.confirmation_content .btn { 
+		margin: 2rem auto;
+		font-family: Mallory, Helvetica, sans-serif;
+		font-weight: bold;
+		background-color: #ff6900;
+	}
+	.prev_button_control button.btn {
+		background-color: #e1e1e1;
+		border-color: #bbb;
+	}
+	button.btn.btn_nav:hover {
+		background-color: #777;
+	}
+	.paypal_button {
+				margin: 2rem auto;
+	}
+	.paypal_button #paypal-button {
+		margin: 7px 0;
+	}
+	.summary_line {
+		font-family: Mallory, Helvetica, sans-serif;
+	}
+	.page_header_container {
+		text-align: center;
+	}
+	.page_header_container svg {
+	   fill: #ff6900;
+     margin: 0.5em auto;
+     max-width: 300px;
+	}
+	#one_time_outer_div h2 { font-size: 24px; }
+	
+	.offer_selector_control {
+		display: flex;
+	}
+	.offer_selector_text,
+	.section_header.payment_info_header,
+	.offer_option_text,
+	.control-label {
+		font-weight: bold;
+		font-family: Mallory, Helvetica, sans-serif;
+	}
+	#sfg_firstname_div,
+	#sfg_lastname_div {
+		max-width: 50%
+	}
+	input#sfg_cardno {
+    width: 160px;
+  }
+	select#sfg_expiremonth,
+	select#sfg_expireyear {
+		width: 80px;
+	}
+	.form-check-label.chk_selector {
+		padding-top: 10px;
+	}
+	#one_time_outer_div { padding: 0; }
+	#sfg_paypal_payment_section, .cc_paypal_divider { display: none!important; }
+	.widg.widg_paymt .paypal_select_button img {
+		height: 40px;
+	}
+	.widg.widg_paymt .paypal_select_button {
+		height: 48px;
+		width: 160px;
+	}
+	.widg.widg_paymt .cc_logo {
+		height: 52px;
+	}
+
+	#sfg_credit_card_payment_section .row .col-sm-9.offset-sm-3 {
+		display: flex;
+	}
+	div#sfg_cards_accepted {
+		margin-right: 20px;
+	}
+	#sfg_paypal_select_button img:first-of-type,
+	#sfg_cards_accepted.disabled {
+		opacity: .5;
+	}
+	.untouched img#sfg_paypal_img { opacity: 1; }
+	.summary_line {
+    font-size: 1.5em;
+    text-align: center;
+			font-family:Calluna, Georgia, serif;
+
+	}
+	#disclaimer-text { padding-top: 25px; }
+	.confirmation_content h1 {
+		font-weight: bold;
+	}
+	.confirmation_content {
+		text-align: center;
+	}
+	.confirm-div {
+		text-align: left;
+	}
+	.confirm-div h2 {
+		font-weight: bold;
+		font-size: 20px;
+		background-color: #e1e1e1;
+		padding: 10px 15px;
+	}
+	.confirm-div .panel-body {
+		padding: 10px 15px;
+	}
+	.confirm-div {
+		border: 1px solid #e1e1e1;
+		border-radius: 4px;
+	}
+	.offer_selector_control > .offer_options ul { padding-left: 0; }
+	.widg_offer img { width: 100%; }
+	input.form-check-input.offer_option_input.offer_term_input { 
+		position: relative; 
+		order: 2; 
+		width: 100%;
+		margin: 1rem 0;
+	}
+	label.form-check-label.chk_selector {
+		display: inline-flex;
+		flex-wrap: wrap;
+	}
+</style>
